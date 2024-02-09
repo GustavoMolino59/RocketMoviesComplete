@@ -8,7 +8,7 @@ export function Movie({data, ...rest}){
     
     return(
         
-        <Container to="./details/4"{...rest}>
+        <Container to={`/details/${data.id}`}{...rest}>
             <strong>{data.title}</strong>
             <Stars key = {data.id} data = {data}/>
             <p>

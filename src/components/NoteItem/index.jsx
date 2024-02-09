@@ -3,16 +3,22 @@ import { FiPlus, FiX } from "react-icons/fi";
 import React, { useState, useEffect } from 'react';
 
 
-export function NoteItem({isNew, value, onClick,placeholder, ...rest}){
+export function NoteItem({setNewTag, isNew, value, onClick,placeholder, ...rest}){
     const [inputValue, setInputValue] = useState(value);
     const [inputWidth, setInputWidth] = useState((value.length + 1) * 16);
+    
+    useEffect(() => {
+        setInputValue(value);
+    }, [value]);
 
     useEffect(() => {
         setInputWidth((inputValue.length + 1) * 16);
     }, [inputValue]);
 
     const handleChange = (event) => {
+        setNewTag(event.target.value);
         setInputValue(event.target.value);
+        
     };
     return(
         <Container isNew={isNew} width={inputWidth} {...rest}>
